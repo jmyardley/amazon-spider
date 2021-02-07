@@ -21,7 +21,7 @@ class ReviewspiderSpider(scrapy.Spider):
 
             obj = {
                 'id': review.css('::attr(id)').extract_first(),
-                'title': review.css('.review-title').css('span::text')get(),
+                'title': review.css('.review-title').css('span::text').get(),
                 'date': review.css('.review-date::text').extract(),
                 'rating': review.css('.review-rating').css('span::text').extract(),
                 'text': review.css('.review-text-content').css('span::text').extract()
