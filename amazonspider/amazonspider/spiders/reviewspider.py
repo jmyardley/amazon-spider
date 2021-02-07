@@ -16,8 +16,9 @@ class ReviewspiderSpider(scrapy.Spider):
 
 
     def parse(self, response):
-        REVIEW = '. a-section review'
+        REVIEW = '.a-section.review.aok-relative'
         for review in response.css(REVIEW):
             yield {
+                'id': review.css('::attr(id)').extract_first()
             }
 
