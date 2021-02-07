@@ -12,6 +12,9 @@ BOT_NAME = 'amazonspider'
 SPIDER_MODULES = ['amazonspider.spiders']
 NEWSPIDER_MODULE = 'amazonspider.spiders'
 
+#Export as CSV Feed
+FEED_FORMAT = "csv"
+FEED_URI = "reviews.csv"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'amazonspider (+http://www.yourdomain.com)'
