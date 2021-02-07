@@ -19,9 +19,6 @@ MONGODB_PORT = 27017
 MONGODB_DB = "reviewsdb"
 MONGODB_COLLECTION = "reviews"
 
-#Export as CSV Feed
-FEED_FORMAT = "csv"
-FEED_URI = "reviews.csv"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'amazonspider (+http://www.yourdomain.com)'
