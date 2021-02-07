@@ -3,7 +3,7 @@ import scrapy
 
 class ReviewspiderSpider(scrapy.Spider):
     name = 'reviewspider'
-    allowed_domains = ['https://www.amazon.com/GoPro-Fusion-Waterproof-Digital-Spherical/product-reviews/B0792MJLNM/ref=cm_cr_getr_d_paging_btm_prev_1?ie=UTF8&reviewerType=all_reviews&pageNumber=1']
+    allowed_domains = ['amazon.com']
     start_urls = ['https://www.amazon.com/GoPro-Fusion-Waterproof-Digital-Spherical/product-reviews/B0792MJLNM/ref=cm_cr_getr_d_paging_btm_prev_1?ie=UTF8&reviewerType=all_reviews&pageNumber=1']
 
     def start_requests(self):
@@ -18,7 +18,6 @@ class ReviewspiderSpider(scrapy.Spider):
     def parse(self, response):
         REVIEW = '.a-section.review.aok-relative'
         for review in response.css(REVIEW):
-
             obj = {
                 'id': review.css('::attr(id)').extract_first(),
                 'title': review.css('.review-title').css('span::text').get(),
@@ -28,3 +27,10 @@ class ReviewspiderSpider(scrapy.Spider):
             }
             
             yield obj
+
+        nextpageel = response.css('.a-last').css('a::attr(href)').get()
+        if nextpageel:
+            yield scrapy.Request(
+                response.urljoin(nextpageel),
+                callback=self.parse
+            )
