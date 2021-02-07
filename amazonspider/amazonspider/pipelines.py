@@ -33,7 +33,6 @@ class MongoDBPipeline(object):
                 raise DropItem("missing {0}".format(data))
         if valid:
             self.collection.insert(dict(item))
-            log.msg("added",
-                    level=log.DEBUG, spider=spider)
+            print("added")
         return item
         
