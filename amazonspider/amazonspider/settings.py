@@ -12,6 +12,13 @@ BOT_NAME = 'amazonspider'
 SPIDER_MODULES = ['amazonspider.spiders']
 NEWSPIDER_MODULE = 'amazonspider.spiders'
 
+ITEM_PIPELINES = {'amazonspider.pipelines.MongoDBPipeline': 0}
+
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27107
+MONGODB_DB = "reviewsdb"
+MONGODB_COLLECTION = "reviews"
+
 #Export as CSV Feed
 FEED_FORMAT = "csv"
 FEED_URI = "reviews.csv"
