@@ -35,6 +35,9 @@ class MongoDBPipeline(object):
             if item.get('msrp'):
                 self.collection1.insert(dict(item))
                 print("product added")
+                
+                product = self.collection1.find()
+                self.collection.update_many({'productid': ''}, {'$set': {'productid': product[0]['_id']}})
             else:
                 self.collection.insert(dict(item))
                 print("added")

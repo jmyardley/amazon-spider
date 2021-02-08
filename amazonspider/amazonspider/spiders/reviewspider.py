@@ -23,7 +23,8 @@ class ReviewspiderSpider(scrapy.Spider):
                 'title': review.css('.review-title').css('span::text').get(),
                 'date': review.css('.review-date::text').extract(),
                 'rating': review.css('.review-rating').css('span::text').extract(),
-                'text': review.css('.review-text-content').css('span::text')[1].extract()
+                'text': review.css('.review-text-content').css('span::text')[1].extract(),
+                'productid': ''
             }
             
             yield obj
