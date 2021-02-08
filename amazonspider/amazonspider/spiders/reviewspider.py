@@ -41,4 +41,19 @@ class ReviewspiderSpider(scrapy.Spider):
             )
            
     def parse_product(self, response):
-        print(response)
+        title = response.css('.a-size-large.product-title-word-break::text').get()
+        msrp = response.css('.priceBlockStrikePriceString::text').get()
+        salePrice = response.css('.a-size-medium.a-color-price::text').get()
+        rating = response.css('#averageCustomerReviews').css('.a-icon-alt::text').get()
+        ratingsCount = response.css('#acrCustomerReviewText::text').get()
+
+        product = {
+            "title": title,
+            "msrp": msrp,
+            "salePrice": salePrice,
+            "rating": rating,
+            "ratingsCount": ratingsCount
+        }
+
+        print(product)
+        yield product
