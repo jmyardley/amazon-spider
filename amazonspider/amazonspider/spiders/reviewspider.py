@@ -34,3 +34,11 @@ class ReviewspiderSpider(scrapy.Spider):
                 response.urljoin(nextpageel),
                 callback=self.parse
             )
+        else:
+            yield scrapy.Request(
+                response.urljoin("/GoPro-Fusion-Waterproof-Digital-Spherical/dp/B0792MJLNM/ref=sr_1_3?crid=D3C7EDM435E7&keywords=gopro+fusion&qid=1550442454&s=electronics&sprefix=GoPro+Fu%2Celectronics%2C1332&sr=1-3"),
+                callback=self.parse_product
+            )
+           
+    def parse_product(self, response):
+        print(response)
