@@ -18,6 +18,7 @@ MONGODB_SERVER = "localhost"
 MONGODB_PORT = 27017
 MONGODB_DB = "reviewsdb"
 MONGODB_COLLECTION = "reviews"
+MONGODB_COLLECTION1 = "products"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

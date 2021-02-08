@@ -24,7 +24,7 @@ class MongoDBPipeline(object):
         )
         db = connection[settings['MONGODB_DB']]
         self.collection = db[settings['MONGODB_COLLECTION']]
-
+        self.collection1 = db[settings['MONGODB_COLLECTION1']]
     def process_item(self, item, spider):
         valid = True
         for data in item:
@@ -32,7 +32,11 @@ class MongoDBPipeline(object):
                 valid = False
                 raise DropItem("missing {0}".format(data))
         if valid:
-            self.collection.insert(dict(item))
-            print("added")
+            if item.get('msrp'):
+                self.collection1.insert(dict(item))
+                print("product added")
+            else:
+                self.collection.insert(dict(item))
+                print("added")
         return item
         
